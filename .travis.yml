@@ -13,5 +13,5 @@ jobs:
     - stage: run tests
       script: pytest
     - stage: build code
-      script: echo "tar code"
+      script: bash build_script.sh
 
