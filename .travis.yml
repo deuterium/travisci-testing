@@ -2,13 +2,19 @@ language: python
 python:
   - "3.7"
 # command to install dependencies
-install:
+before_install:
     - pip install -r requirements.txt
-# command to run tests
-script:
-    - pytest
+jobs:
+  include:
+    - stage: setup tests
+      script: echo $TRAVIS_BUILD_NUMBER
+    - stage: run tests
+      script: pytest
+    - stage: build code
+      script: echo "tar code"
 matrix:
   include:
     - python: 3.7
       dist: xenial
       sudo: true
+
