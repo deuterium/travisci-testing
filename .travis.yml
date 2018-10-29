@@ -14,4 +14,12 @@ jobs:
       script: pytest
     - stage: build code
       script: bash build_script.sh
-
+deploy:
+  provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file: "python-app-$TRAVIS_BUILD_NUMBER.tar.gz"
+  file_glob: true
+  file: python-app-*.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
