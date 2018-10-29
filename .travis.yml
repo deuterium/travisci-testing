@@ -1,6 +1,8 @@
 language: python
 python:
   - "3.7"
+dist: xenial
+sudo: true
 # command to install dependencies
 before_install:
     - pip install -r requirements.txt
@@ -12,9 +14,4 @@ jobs:
       script: pytest
     - stage: build code
       script: echo "tar code"
-matrix:
-  include:
-    - python: 3.7
-      dist: xenial
-      sudo: true
 
